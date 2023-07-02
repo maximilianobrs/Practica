@@ -1,0 +1,98 @@
+{{#if pendientes.length}}
+<header>
+  <div class="container">
+    <div class="box-title">
+      <h1>{{title}}</h1>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <div class="row">
+
+      {{#each pendientes}}
+      <div class="card">
+        <div>
+          <h2>Nombre:</h2>
+          <p>{{nombre}}</p>
+        </div>
+        <div>
+          <h2>Fecha:</h2>
+          <p>{{fecha}}</p>
+        </div>
+        <div>
+          <h2>Descripcion:</h2>
+          <p>{{descripcion}}</p>
+        </div>
+        <div>
+          <h2>Prioridad:</h2>
+          <p>{{prioridad}}</p>
+        </div>
+      </div>
+      {{/each}}
+
+    </div>
+  </div>
+</main>
+{{else}}
+<header>
+  <div class="container">
+    <div class="box-title">
+      <h1>{{title2}}</h1>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="row">
+      <div class="imagen"></div>
+  </div>
+</main>
+{{/if}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <h1>Tareas pendientes</h1>
+{{#if pendientes.length}}
+<div class="container">
+  <div class="box-table">
+    <table id="customers">
+      <thead>
+        <tr>
+          <th class="border-l">Nombre</th>
+          <th>Descripción</th>
+          <th>Fecha</th>
+          <th class="border-r">Prioridad</th>
+        </tr>
+      </thead>
+      <tbody id="tabla">
+        {{#each pendientes}}
+        <tr>
+          <td class="border-l">{{nombre}}</td>
+          <td>{{descripcion}}</td>
+          <td>{{fecha}}</td>
+          <td class="border-r">{{prioridad}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{else}}
+  <p>No hay tareas pendientes por hacer</p>
+  {{/if}}
+
+</div> --}}

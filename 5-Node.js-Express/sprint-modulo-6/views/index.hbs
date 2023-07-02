@@ -1,0 +1,133 @@
+<header>
+	<div class="container">
+		<div class="box-button">
+			<button id="bt3">Roommates</button>
+			<button id="bt1">Agregar Gastos</button>
+			<button id="bt2">Historial</button>
+		</div>
+	</div>
+		<div class="box-content">
+
+			{{!-- INICIO DE AGREGAR GASTOS --}}
+			<div class="box mainForm">
+				<div class="formulario">
+					<div class="content-form">
+						<div class="box-title-Gastos">
+							<h2>Agregar Gastos</h2>
+						</div>
+						<div>
+							<form id='addGasto'>
+								<div>
+									<div class="column">
+										<label for='roommate_id'>Nombre:</label>
+										<select name='roommate_id' id='roommate_id'>
+											{{#each roommates}}
+											<option value='{{this.id}}'>{{this.nombre}}</option>
+											{{/each}}
+										</select>
+									</div>
+								</div>
+
+								<div class="column">
+									<label for='descripcion'>Descripción:</label>
+									<input type='textarea' name='descripcion' id='descripcion' />
+								</div>
+
+								<div class="column">
+									<label for='monto'>Monto:</label>
+									<input type='number' name='monto' id='monto' />
+								</div>
+								<div class="form-button">
+									<button type='submit'>Agregar Gasto</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="form-img"></div>
+				</div>
+
+			</div>
+			{{!-- FIN DE AGREGAR GASTOS --}}
+
+			{{!-- INICIO DE HISTORIAL --}}
+			<div class="box historial">
+				<div class="style-tablas">
+					<div class="box-title-historial">
+						<h2>Historial</h2>
+					</div>
+					<div class="box-table table-button">
+						<table>
+							<thead>
+								<tr>
+									<th>Nombre</th>
+									<th>Comentario</th>
+									<th>Monto</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each gastos}}
+								<tr>
+									<td>{{this.roommate.nombre}}</td>
+									<td>{{this.descripcion}}</td>
+									<td>{{this.monto}}</td>
+									<td>
+										<div class="bt-flex">
+											<div>
+												<form class="updateGasto" data-id="{{this.id}}">
+													<button type="submit" class="bt-editar"></button>
+												</form>
+											</div>
+											<div>
+												<form class="deleteGasto" data-id="{{this.id}}">
+													<button type="submit" class="bt-eliminar"></button>
+												</form>
+											</div>
+										</div>
+									</td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			{{!-- FIN DE HISTORIAL --}}
+
+			{{!-- INICIO DE ROOMMATES --}}
+			<div class="box roommates">
+				<div class="style-tablas">
+					<div class="box-title-roommates">
+						<h2>Roommates</h2>
+					</div>
+					<div>
+						<form id='addRoommate'>
+							<button type='submit'>Agregar Roommate</button>
+						</form>
+					</div>
+					<div class="box-table">
+						<table>
+							<thead>
+								<tr>
+									<th>Nombre</th>
+									<th>Debe</th>
+									<th>Recibe</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each roommates}}
+								<tr>
+									<td>{{this.nombre}}</td>
+									<td>{{this.debe}}</td>
+									<td>{{this.recibe}}</td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			{{!-- FIN DE ROOMMATES --}}
+		</div>
+</header>

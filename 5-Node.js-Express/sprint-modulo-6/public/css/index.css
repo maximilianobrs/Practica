@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+html {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* PRIMER FONDO PARA OCUPAR MENOS RECURSOS*/
+
+/* body {
+    background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+    overflow-x: hidden;
+} */
+
+body {
+    place-content: center;
+    background: rgb(189, 189, 189);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 143, 38, 1) 0%, rgba(150, 126, 197, 1) 48%, rgba(0, 255, 222, 1) 100%);
+    background-size: 300% 100%;
+    animation: gradient 5s ease infinite;
+    overflow-x: hidden;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+header {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.container {
+    max-width: 1200px;
+    height: auto;
+    margin: auto;
+}
+.box-button {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-button button {
+    margin: 0 10px;
+    height: 50px;
+    width: 120px;
+    padding: 5px;
+    font-size: 14px;
+    border: 2px solid white;
+    background: none;
+    border-radius: 5px;
+    color: white;
+    transform: scale(1);
+    transition: 1s;
+    cursor: pointer;
+}
+.box-button button:hover {
+    transform: scale(1.1);
+    transition: 1s;
+}
+.box-content {
+    height: auto;
+    min-height: 600px;
+    position: relative;
+}
+.box {
+    height: auto;
+    width: auto;
+    position: absolute;
+    animation-fill-mode: forwards;
+    display: none;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+.mainForm {
+    animation-name: aparicion;
+    animation-duration: 1s;
+}
+.historial {
+    animation-name: aparicion;
+    animation-duration: 1s;
+}
+
+.roommates {
+    animation-name: aparicion;
+    animation-duration: 1s;
+}
+
+.ocultar {
+    animation-name: desaparecer;
+    animation-duration: 1s;
+}
+
+/*PRINCIPIO ESTILO DE AGREGAR GASTOS*/
+.box-title-Gastos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.formulario {
+    width: 700px;
+    height: 600px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    margin-bottom: 3rem;
+}
+
+.content-form {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.content-form form {
+    width: 70%;
+    margin: auto;
+}
+
+.content-form form input,
+.content-form form select {
+    height: 30px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+}
+
+.content-form form label {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-img {
+    height: 100%;
+    width: 50%;
+    border-radius: 0 20px 20px 0;
+    background-image: url('../img/planeta.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.form-button {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-button button {
+    color: white;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(0, 136, 255);
+    font-size: 14px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 1s;
+}
+
+.form-button button:hover {
+    transform: scale(1.1);
+    transition: 1s;
+    background: none;
+    border: 1px solid black;
+    color: black;
+}
+
+/*FIN ESTILO DE AGREGAR GASTOS*/
+/*INICIO ESTILO DE TABLAS*/
+.style-tablas {
+    width: 700px;
+    height: auto;
+    min-height: 400px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.box-table table {
+    width: 100%;
+    margin: 1rem auto;
+    text-align: center;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.box-table table thead {
+    background-color: black;
+    height: 40px;
+    color: white;
+}
+
+.box-table table tbody tr td {
+    height: 50px;
+    border-bottom: 1px solid black;
+}
+
+/*FIN ESTILO DE TABLAS*/
+/*PRINCIPIO ESTILO DE ROOMMATES*/
+#addRoommate button {
+    color: white;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(0, 136, 255);
+    font-size: 14px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 1s;
+}
+
+#addRoommate button:hover {
+    transform: scale(1.1);
+    transition: 1s;
+    background: none;
+    border: 1px solid black;
+    color: black;
+}
+
+/*FIN ESTILO DE ROOMMATES*/
+/*INICIO ESTILO DE HISTORIAL*/
+.table-button button {
+    height: 40px;
+    width: 40px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 1s;
+    margin: 0 5px;
+}
+
+.table-button button:hover {
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+.bt-eliminar {
+    background-image: url('../img/eliminar.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.bt-editar {
+    background-image: url('../img/editar.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.bt-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*FIN ESTILO DE HISTORIAL*/
+/*INICIO KEYFRAMES*/
+@keyframes aparicion {
+    0% {
+        transform: translateX(-200%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes desaparecer {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(200%);
+        opacity: 0;
+    }
+}
+
+/*CIERRE KEYFRAMES*/
+/*INICIO MEDIA*/
+@media (max-width: 4000px) {
+    .box {
+        left: 40%;
+    }
+}
+
+@media (max-width: 2000px) {
+    .box {
+        left: 30%;
+    }
+}
+
+@media(max-width: 1540px) {
+    .box {
+        left: 25%;
+    }
+}
+
+@media (max-width: 1201px) {
+    .box {
+        left: 15%;
+    }
+}
+
+@media (max-width: 1023px) {
+    .box {
+        left: 10%;
+    }
+
+    .formulario {
+        width: 700px;
+        height: 700px;
+        flex-direction: column;
+    }
+
+    .content-form {
+        height: 70%;
+        width: 100%;
+    }
+
+    .form-img {
+        height: 40%;
+        width: 100%;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .style-tablas {
+        width: 700px;
+    }
+
+    body {
+        background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+        overflow-x: hidden;
+        animation: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .box-content {
+        width: 100%;
+    }
+
+    .box {
+        width: 100%;
+        left: 0%;
+    }
+
+    .formulario {
+        width: 100%;
+    }
+
+    .style-tablas {
+        width: 100%;
+    }
+
+    .bt-flex {
+        flex-direction: column;
+    }
+
+    .table-button button {
+        margin: 5px 0;
+    }
+}
+
+/*CIERRE MEDIA*/
