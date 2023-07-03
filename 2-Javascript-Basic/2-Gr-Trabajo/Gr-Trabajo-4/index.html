@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form id="calcularEdad">
+    <h2>Ejercicio a)</h2>
+    <div>
+      <label for="fechaNacimiento">Fecha de Nacimiento</label>
+      <input type="date" name="fechaNacimiento" id="fechaNacimiento">
+    </div>
+    <input type="submit" value="Calcular Edad">
+  </form>
+
+  <form id="calcularPermanenciaEnLaOrganizacion">
+    <h2>Ejercicio b)</h2>
+    <div>
+      <label for="fechaIngreso1">Fecha de Ingreso</label>
+      <input type="date" name="fechaIngreso1" id="fechaIngreso1">
+    </div>
+    <div>
+      <label for="fechaSalida1">Fecha de Salida</label>
+      <input type="date" name="fechaSalida1" id="fechaSalida1">
+    </div>
+    <input type="submit" value="Calcular Permanencia en la Organización">
+  </form>
+
+  <form id="calcularHorasTrabajadas">
+    <h2>Ejercicio c)</h2>
+    <div>
+      <label for="fechaIngreso">Fecha de Ingreso</label>
+      <input type="date" name="fechaIngreso" id="fechaIngreso">
+    </div>
+    <div>
+      <label for="horaIngreso">Hora de Ingreso</label>
+      <input type="time" name="horaIngreso" id="horaIngreso">
+    </div>
+    <div>
+      <label for="fechaSalida">Fecha y hora de Salida</label>
+      <input type="date" name="fechaSalida" id="fechaSalida">
+    </div>
+    <div>
+      <label for="horaSalida">Hora de Salida</label>
+      <input type="time" name="horaSalida" id="horaSalida">
+    </div>
+    <input type="submit" value="Calcular Horas Trabajadas">
+  </form>
+  <div>
+    <h2>Ejercicio d)</h2>
+    <button id="calcularHorasTrabajadasPor8Colaborares">
+      Calcular Horas Trabajadas por 8 Colaboradores
+    </button>
+  </div>
+
+  <script src="assets/js/a_CalcularFechas.js"></script>
+  <script src="assets/js/b_CalcularPermanenciaEnLaOrganizacion.js"></script>
+  <script src="assets/js/c_calcularHorasTrabajadas.js"></script>
+  <script src="assets/js/d_calcularHorasTrabajadasPor8Colaborares.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      this.querySelector('#calcularEdad').addEventListener('submit', function (e) {
+        e.preventDefault()
+        const fechaNacimiento = this.querySelector('#fechaNacimiento').value
+        const edad = calcularEdad(fechaNacimiento)
+        alert(edad.mensajeCompleto)
+      })
+      this.querySelector('#calcularPermanenciaEnLaOrganizacion').addEventListener('submit', function (e) {
+        e.preventDefault()
+        const fechaIngreso = this.querySelector('#fechaIngreso1').value
+        const fechaSalida = this.querySelector('#fechaSalida1').value
+        const permanencia = calcularPermanenciaEnLaOrganizacion(fechaIngreso, fechaSalida)
+        alert(permanencia.mensajeCompleto)
+      })
+      this.querySelector('#calcularHorasTrabajadas').addEventListener('submit', function (e) {
+        e.preventDefault()
+        const fechaIngreso = this.querySelector('#fechaIngreso').value
+        const horaIngreso = this.querySelector('#horaIngreso').value
+        const fechaSalida = this.querySelector('#fechaSalida').value
+        const horaSalida = this.querySelector('#horaSalida').value
+        const horasTrabajadas = calcularHorasTrabajadas(fechaIngreso + 'T' + horaIngreso, fechaSalida + 'T' + horaSalida)
+        alert(horasTrabajadas.mensajeCompleto)
+      })
+      this.querySelector('#calcularHorasTrabajadasPor8Colaborares').addEventListener('click', function (e) {
+        e.preventDefault()
+        const horasTrabajadas = calcularHorasTrabajadasPor8Colaborares()
+        alert(horasTrabajadas.mensajeCompleto)
+      }
+      )
+    }, false);
+  </script>
+</body>
+
+</html>

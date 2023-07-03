@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./assets/css/main.css" />
+
+		<title>Ejercicio Grupal 1</title>
+	</head>
+	<body>
+		<main class="container">
+			<section class="row">
+				<h1>Herramientas</h1>
+				<div class="col">
+					<nav>
+						<div class="nav nav-tabs" id="nav-tab" role="tablist">
+							<button
+								class="nav-link active"
+								id="nav-home-tab"
+								data-bs-toggle="tab"
+								data-bs-target="#nav-home"
+								type="button"
+								role="tab"
+								aria-controls="nav-home"
+								aria-selected="true"
+							>
+								Transformar Temperaturas
+							</button>
+							<button
+								class="nav-link"
+								id="nav-profile-tab"
+								data-bs-toggle="tab"
+								data-bs-target="#nav-profile"
+								type="button"
+								role="tab"
+								aria-controls="nav-profile"
+								aria-selected="false"
+							>
+								Transformar Días en Años/Semanas/Días
+							</button>
+							<button
+								class="nav-link"
+								id="nav-contact-tab"
+								data-bs-toggle="tab"
+								data-bs-target="#nav-contact"
+								type="button"
+								role="tab"
+								aria-controls="nav-contact"
+								aria-selected="false"
+							>
+								Suma 5 Números
+							</button>
+						</div>
+					</nav>
+					<div class="tab-content" id="nav-tabContent">
+						<div
+							class="tab-pane fade show active"
+							id="nav-home"
+							role="tabpanel"
+							aria-labelledby="nav-home-tab"
+							tabindex="0"
+						>
+							<form id="formCelsius">
+								<div class="mb-3">
+									<label for="exampleFormControlInput1" class="form-label"
+										>Grados Celsius</label
+									>
+									<input
+										type="number"
+										class="form-control"
+										id="grados"
+										placeholder="Grados Celsius a calcular"
+										required
+									/>
+								</div>
+								<div class="form-check">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="temperatura"
+										id="kelvin"
+										value="kelvin"
+										required
+									/>
+									<label class="form-check-label" for="kelvin"> Kelvin </label>
+								</div>
+								<div class="form-check">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="temperatura"
+										id="fahrenheit"
+										value="fahrenheit"
+										required
+									/>
+									<label class="form-check-label" for="fahrenheit">
+										Fahrenheit
+									</label>
+								</div>
+								<div class="form-check">
+									<input
+										class="form-check-input"
+										type="radio"
+										name="temperatura"
+										id="ambos"
+										value="ambos"
+										required
+									/>
+									<label class="form-check-label" for="ambos"> Ambos </label>
+								</div>
+								<div class="col-auto">
+									<button type="submit" class="btn btn-primary my-3">
+										Transformar
+									</button>
+								</div>
+							</form>
+						</div>
+						<div
+							class="tab-pane fade"
+							id="nav-profile"
+							role="tabpanel"
+							aria-labelledby="nav-profile-tab"
+							tabindex="0"
+						>
+							<form id="formDias">
+								<div class="mb-3">
+									<label for="dias" class="form-label">Días a calcular</label>
+									<input
+										type="number"
+										class="form-control"
+										id="dias"
+										name="dias"
+										placeholder="N° de días"
+										required
+									/>
+								</div>
+								<div class="col-auto">
+									<button type="submit" class="btn btn-primary my-3">
+										Transformar
+									</button>
+								</div>
+							</form>
+						</div>
+						<div
+							class="tab-pane fade"
+							id="nav-contact"
+							role="tabpanel"
+							aria-labelledby="nav-contact-tab"
+							tabindex="0"
+						>
+							<div class="col-auto">
+								<button id="calcularSumar" class="btn btn-primary my-3">
+									Calcular
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="row">
+				<h2>Logs</h2>
+				<div class="col" id="mensajes"></div>
+			</section>
+		</main>
+		<script src="./assets/js/bootstrap.bundle.min.js"></script>
+		<script src="./assets/js/main.js"></script>
+	</body>
+</html>

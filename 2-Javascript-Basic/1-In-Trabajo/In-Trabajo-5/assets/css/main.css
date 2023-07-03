@@ -1,0 +1,16 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://i.pinimg.com/originals/16/e0/3b/16e03bd0765508c1bb5bc9f36922de11.jpg');
+}
+#resultado{
+    background-color: white;
+    height: 300px;
+    width: 500px;
+    padding: 2rem;
+    border-radius: 5rem;
+    display: flex;
+    align-items: center;
+}
