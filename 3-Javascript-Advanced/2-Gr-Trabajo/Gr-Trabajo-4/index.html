@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Vite App</title>
+</head>
+
+<body>
+	<main> 
+		<div class="bg-dark text-secondary  text-center"> 
+			<div class="container py-5 ">
+				<div class="row p-4 mb-4 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+					<div class="col-lg-5 p-3 p-lg-5 pt-lg-3">
+						<h1 class="display-4 fw-bold lh-1">El tiempo</h1>
+						<p class="lead">Usando el API de https://home.openweathermap.org/</p>
+						<div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3"> 
+						</div>
+					</div>
+					<div class="col-lg-5 offset-lg-1 p-0 overflow-hidden shadow-lg">
+						<img class="rounded-lg-3 img-fluid" src="/src/public/theweather.jpeg" alt="" width="400">
+					</div>
+				</div>
+				<div class="row row-cols-3" id="cards-weather">
+ 
+				</div>
+			</div>
+		</div>
+	</main>
+	<div id="modal"></div>
+
+	<script src="./src/assets/js/bootstrap.bundle.min.js"></script>
+	<script type="module" src="./src/main.js"></script>
+</body>
+
+</html>

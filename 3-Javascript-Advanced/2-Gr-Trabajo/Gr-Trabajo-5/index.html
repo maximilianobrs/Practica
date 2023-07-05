@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Vite App</title>
+	<link rel="stylesheet" href="./src/assets/css/main.css">
+</head>
+
+<body>
+	<header class="header-img">
+		<nav>
+			<div class="container box-nav">
+				<a href="#"><img class="logo"
+						src="https://www.interlan.com.co/wp-content/uploads/2019/12/Logo-peque%C3%B1o-01.png"
+						alt="logo"></a>
+				<ul>
+					<li><a href="#">INICIO</a></li>
+					<li><a href="#">CONTACTO</a></li>
+					<li class="contacto"><a href="#">REGISTRO</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container section1">
+			<article class="box-contentForm">
+				<form class="box-form">
+					<div>
+						<h2>Recetas</h2>
+					</div>
+					<div class="form-floating">
+						<select class="form-control" name="categoria" id="categoria">
+							<option value="0">Seleccione una categoría</option>
+						</select>
+						<label for="categoria">Seleccione una categoría</label>
+					</div>
+					<div class="verduras">
+					</div>
+				</form>
+				<div class="imagen">
+					<h1>Que se Come Hoy</h1>
+					<h2>Tu socio gastronómico de confianza.</h2>
+				</div>
+			</article>
+		</div>
+	</header>
+
+	<!-- INICIO MAIN -->
+	<main class="container pt-5">
+		<section class="py-5">
+			<div class="row row-cols-1 row-cols-md-3 g-4" id="comidas"></div>
+		</section>
+	</main>
+	<!-- CIERRE MAIN -->
+	
+	<script src="./src/assets/js/bootstrap.bundle.min.js"></script>
+	<script type="module" src="./src/main.js"></script>
+</body>
+
+</html>

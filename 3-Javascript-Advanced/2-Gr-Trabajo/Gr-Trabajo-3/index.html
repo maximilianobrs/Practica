@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="./src/public/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Vite App</title>
+</head>
+
+<body>
+	<main>
+		<section>
+			<h1>Formulario de registro de empresas</h1>
+			<form id="formAddBussines" class="row g-3">
+				<div class="col-md-6">
+					<label for="nombre" class="form-label">Nombre:</label>
+					<input type="text" class="form-control" id="nombre" name="nombre" autocomplete minlength="5" required
+						placeholder="Razón Social" />
+				</div>
+
+				<div class="col-md-3">
+					<label for="rut" class="form-label">RUT:</label>
+					<input type="text" class="form-control" id="rut" maxlength="12" minlength="10" name="rut" required
+						placeholder="11111111-1" />
+				</div>
+				<div class="col-md-3">
+					<label for="rubro" class="form-label">Rubro:</label>
+					<input type="text" class="form-control" id="rubro" maxlength="12" minlength="10" name="rubro" required />
+				</div>
+				<div class="mb-3">
+					<label for="tamanio" class="form-label">Tamaño:</label>
+					<select class="form-select" id="tamanio" name="tamanio" required>
+						<option value="">Selecciona una empresa</option>
+					</select>
+				</div>
+
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary">
+						Agregar empresa
+					</button>
+				</div>
+			</form>
+		</section>
+
+		<section>
+			<h1>Lista de empresas</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">ID Empresa</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">RUT</th>
+						<th scope="col">Acciones</th>
+					</tr>
+				</thead>
+				<tbody id="listaEmpresas"></tbody>
+			</table>
+		</section>
+		<div class="modal fade" id="modalImportaciones" aria-hidden="true" aria-labelledby="modalImportaciones"
+			tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="modalImportacionesTitutlo">
+							Agregar Importaciones
+						</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<section>
+							<form id="formAddImport">
+								<div class="mb-3">
+									<label for="id_empresa" class="form-label">ID Empresa:</label>
+									<select class="form-select" id="id_empresa" name="id_empresa" required>
+										<option value="">Selecciona una empresa</option>
+									</select>
+								</div>
+								<div class="mb-3">
+									<label for="estado" class="form-label">ID Empresa:</label>
+									<select class="form-select" id="estado" name="estado" required>
+										<option value="">Selecciona un estado</option>
+										<option value="Visado">Visado</option>
+										<option value="Prohibido">Prohibido</option>
+									</select>
+								</div>
+								
+
+								<div class="mb-3">
+									<label for="producto" class="form-label">Producto:</label>
+									<input type="text" class="form-control" id="producto" name="producto" required />
+								</div>
+
+								<div class="mb-3">
+									<label for="numero_productos" class="form-label">Número de productos:</label>
+									<input type="number" class="form-control" id="numero_productos" name="numero_productos" required />
+								</div>
+
+								<div class="mb-3">
+									<label for="precio_unitario" class="form-label">Precio unitario:</label>
+									<input type="number" class="form-control" id="precio_unitario" name="precio_unitario" required />
+								</div>
+
+								<button type="submit" class="btn btn-primary">
+									Agregar importación
+								</button>
+							</form>
+						</section>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-danger" data-bs-target="#modalImportaciones" data-bs-toggle="modal">
+							Cerrar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modalMessage" aria-hidden="true" aria-labelledby="modalMessage" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="modalMessageTitutlo">
+							Mensajes
+						</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body" id="messageModal"></div>
+					<div class="modal-footer">
+						<button class="btn btn-danger" data-bs-target="#modalMessage" data-bs-toggle="modal">
+							Cerrar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script src="./src/assets/js/bootstrap.bundle.min.js"></script>
+	<script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
