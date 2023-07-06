@@ -1,8 +1,10 @@
 import pg from 'pg';
+const { Pool } = pg;
+
 import dotenv from 'dotenv';
 
 dotenv.config();
-const { Pool } = pg;
+
 
 const pool = new Pool(
     {
@@ -14,9 +16,17 @@ const pool = new Pool(
     }
 )
 
-const obtenerUsuarios = () => {
+// export const obtenerUsuarios = () => {
 
-}
-const nuevoUsuario = (usuario) => {
+// }
+export const nuevoUsuario = async(usuario) => {
+    const values = Object.values(usuario);
 
+    const consulta = {
+        text:'INSERT INTO usuarios(nombre) VALUES ($1)',
+        values
+    }
+
+    const result = await pool.query(consulta);
+    return result;
 }
