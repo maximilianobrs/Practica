@@ -1,51 +1,75 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import { create } from 'express-handlebars';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import {obtenerRegistro,agregarRegistro} from './db/dataQueries.js'
-
-
-const app = express();
-const port = 7000;
+import { obtenerRegistro, agregarRegistro } from './db/dataQueries.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-app.use(bodyParser.json());
-app.use('/js', express.static(`${__dirname}/public/assets/js`))
+const app = express();
+app.use(express.json());
+
+const port = 7000;
+
+app.use('/axios',express.static(`${__dirname}/node_modules/axios/dist`))
+app.use('/js', express.static(`${__dirname}/public/assets/js`));
+app.use('/elements', express.static(`${__dirname}/public/assets/js/utils/elements`));
+app.use('/css', express.static(`${__dirname}/public/assets/css`));
+app.use('/img', express.static(`${__dirname}/public/assets/img`));
 
 //Configuracion handlebars.
-const hbs = create({extname: '.hbs',});
+const hbs = create({ extname: '.hbs', });
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
-app.get('/', (req, res) => {
-  res.render('home');
+app.get('/login', (req, res) => {
+  res.render('login', {
+    layout: 'mainLogin'
+  });
+});
+app.get('/registro', (req, res) => {
+  res.render('registro', {
+    layout: 'mainRegistro'
+  });
 });
 
-app.get('/registro',async(req,res)=>{
+app.post('/login', async (req, res) => {
   try {
-      const usuario = req.body;
-      const registro = await obtenerRegistro(usuario);
-      console.log(registro);
-      res.send(registro);
+    const usuario = req.body;
+    const registro = await obtenerRegistro(usuario);
+    if (registro) {
+      res.status(200)
+        .json({ result: true, message: 'Exito al iniciar sesion' })
+        .end();
+    } else {
+      res.status(404)
+        .json({ result: false, message: 'Usuario no registrado' })
+        .end();
+    }
+
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error al obtener el registro');
+    res.status(404)
+      .json({result: false, message: 'Error al iniciar sesion'})
+      .end();
   }
-})
-app.post('/registro',async(req,res)=>{
+});
+
+app.post('/registro', async (req, res) => {
   try {
     const registro = req.body;
     await agregarRegistro(registro);
-    console.log(registro);
-    res.send('Registro agregado');
+    res.status(201)
+      .json({ result: true, message: 'Exito usuario registrado' })
+      .end();
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error al hacer el registro');
+    res.status(500)
+      .json([{ result: false, message: 'Error al hacer el registro' }])
+      .end();
   }
-})
+});
 
 app.listen(port, () => console.log(`Servidor listo en el puerto ${port}`));
 
