@@ -24,14 +24,10 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 app.get('/login', (req, res) => {
-  res.render('login', {
-    layout: 'mainLogin'
-  });
+  res.render('login');
 });
 app.get('/registro', (req, res) => {
-  res.render('registro', {
-    layout: 'mainRegistro'
-  });
+  res.render('registro');
 });
 
 app.post('/login', async (req, res) => {
