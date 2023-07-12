@@ -29,6 +29,9 @@ app.get('/login', (req, res) => {
 app.get('/registro', (req, res) => {
   res.render('registro');
 });
+app.get('/lobby', (req, res) => {
+  res.render('lobby');
+})
 
 app.post('/login', async (req, res) => {
   try {

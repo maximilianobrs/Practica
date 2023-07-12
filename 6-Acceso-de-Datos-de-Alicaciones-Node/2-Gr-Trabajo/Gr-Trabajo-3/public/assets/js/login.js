@@ -60,7 +60,8 @@ const valueform = async()=>{
          axios.post("http://localhost:7000/login",{
             email:valueEmail,
             contrasenia:valueContrasenia
-         }).then((response)=>{  
+         }).then((response)=>{ 
+            console.log(response); 
             if(response.data.result){
                 window.location.replace("http://localhost:7000/lobby");
             }else{
