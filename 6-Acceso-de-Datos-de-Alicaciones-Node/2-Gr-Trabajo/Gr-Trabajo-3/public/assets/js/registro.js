@@ -77,10 +77,12 @@ const valueform = async()=>{
             nombre:valueNombre,
             email:valueEmail,
             contrasenia:valueContrasenia
-         }).then((response)=>{  
-            if(response.data.result){
+         }).then((response)=>{   
+            if(response.status === 201){
                 window.location.replace("http://localhost:7000/login");
             }
+         }).catch((error)=>{
+            console.log(error);
          })
     }
 }

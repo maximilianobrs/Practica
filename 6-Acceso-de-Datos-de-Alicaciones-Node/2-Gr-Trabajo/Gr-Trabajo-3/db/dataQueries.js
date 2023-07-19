@@ -23,7 +23,7 @@ export let obtenerRegistro = async (usuario) => {
             values
         }
         const {rows} = await pool.query(consulta);
-        return rows.length > 0
+        return rows.length > 0;
     } catch (error) {
         console.log(error);
     }
@@ -36,8 +36,8 @@ export let agregarRegistro = async (registro) => {
             text: 'INSERT INTO registros (nombre , email , contrasenia) VALUES ( $1, $2, $3)',
             values
         }
-        const resuts = await pool.query(consulta);
-        return resuts
+        const results = await pool.query(consulta);
+        return results
     } catch (error) {
         console.log(error);
     }

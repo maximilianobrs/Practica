@@ -13,7 +13,6 @@ const port = 7000;
 
 app.use('/axios',express.static(`${__dirname}/node_modules/axios/dist`))
 app.use('/js', express.static(`${__dirname}/public/assets/js`));
-app.use('/elements', express.static(`${__dirname}/public/assets/js/utils/elements`));
 app.use('/css', express.static(`${__dirname}/public/assets/css`));
 app.use('/img', express.static(`${__dirname}/public/assets/img`));
 
@@ -37,20 +36,21 @@ app.post('/login', async (req, res) => {
   try {
     const usuario = req.body;
     const registro = await obtenerRegistro(usuario);
+    
     if (registro) {
       res.status(200)
-        .json({ result: true, message: 'Exito al iniciar sesion' })
+        .json({message: 'Exito al iniciar sesion' })
         .end();
-    } else {
+    } else{
       res.status(404)
-        .json({ result: false, message: 'Usuario no registrado' })
+        .json({message: 'No encontrado' })
         .end();
     }
 
   } catch (error) {
     console.log(error);
-    res.status(404)
-      .json({result: false, message: 'Error al iniciar sesion'})
+    res.status(500)
+      .json({message: 'Se a producido un error'})
       .end();
   }
 });
@@ -65,7 +65,7 @@ app.post('/registro', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500)
-      .json([{ result: false, message: 'Error al hacer el registro' }])
+      .json([{ message: 'Se a producido un error' }])
       .end();
   }
 });

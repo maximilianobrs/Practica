@@ -61,13 +61,15 @@ const valueform = async()=>{
             email:valueEmail,
             contrasenia:valueContrasenia
          }).then((response)=>{ 
-            console.log(response); 
-            if(response.data.result){
+            console.log(response.status);
+            if(response.status === 200){
+                console.log('if');
                 window.location.replace("http://localhost:7000/lobby");
-            }else{
-                const mensaje = response.data.message
-                agregarError(contrasenia,mensaje);
+            }else {
+                agregarError(contrasenia,"No se pudo establecer conexión");
             }
+         }).catch((error)=>{
+            console.log(error);
          })
     }
 }
