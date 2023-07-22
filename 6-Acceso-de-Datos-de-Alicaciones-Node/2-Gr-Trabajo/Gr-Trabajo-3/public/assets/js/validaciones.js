@@ -1,6 +1,9 @@
 const formRegistro = document.querySelector('#formRegistro');
-const email = document.querySelector('#email');
-const contrasenia = document.querySelector('#contrasenia');
+const formLogin = document.querySelector('#formLogin');
+const loginEmail = document.querySelector('#loginEmail');
+const loginContrasenia = document.querySelector('#loginContrasenia');
+const RegistroEmail = document.querySelector('#RegistroEmail');
+const RegistroContrasenia = document.querySelector('#RegistroContrasenia');
 
 //Funcion para agregar el mensaje de error
 const agregarError = (element,mensage)=>{
@@ -23,11 +26,11 @@ const validEmail = (email) => {
 }
 
 //Funcion validaciones email
-const valuesEmail = (email,element)=>{
+const validacionesEmail = (email,element)=>{
     if(email.length === 0 ){
         agregarError(element,"Ingreso de datos requerido")
     }else if(!validEmail(email)){
-        agregarError(element,"Email no es válido")
+        agregarError(element,"Email no es valido")
     }else{
         removerError(element);
         return true
@@ -35,7 +38,7 @@ const valuesEmail = (email,element)=>{
 }
 
 //Funcion validaciones contraseña
-const valuesContrasenia = (contrasenia,element)=>{
+const validacionesContrasenia = (contrasenia,element)=>{
     if(contrasenia.length === 0 ){
         agregarError(element,"Ingreso de datos requerido")
     }else if(contrasenia.length < 8){
@@ -48,13 +51,42 @@ const valuesContrasenia = (contrasenia,element)=>{
     }
 }
 
-//Funcion inicio de validaciones formulario
-const valueform = async()=>{
-    const valueEmail = email.value;
-    const valueContrasenia = contrasenia.value;
+const obtenerUsuarios = async()=>{
+    try {
+        let response = await axios.get("http://localhost:7000/usuarios")
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-    const responseEmail = await valuesEmail(valueEmail,email);
-    const responseContrasenia = await valuesContrasenia(valueContrasenia,contrasenia);
+//Funcion inicio de validaciones formulario
+const valueFormRegistro = async()=>{
+    const valueEmail = RegistroEmail.value;
+    const valueContrasenia = RegistroContrasenia.value;
+
+    const responseEmail = await validacionesEmail(valueEmail,RegistroEmail);
+    const responseContrasenia = await validacionesContrasenia(valueContrasenia,RegistroContrasenia);
+
+    if(responseEmail && responseContrasenia){
+         axios.post("http://localhost:7000/usuario",{
+            email:valueEmail,
+            contrasenia:valueContrasenia
+         }).then((response)=>{   
+            if(response.status === 201){
+                obtenerUsuarios();
+            }
+         }).catch((error)=>{
+            console.log(error);
+         })
+    }
+}
+const valueFormLogin = async()=>{
+    const valueEmail = loginEmail.value;
+    const valueContrasenia = loginContrasenia.value;
+
+    const responseEmail = await validacionesEmail(valueEmail,loginEmail);
+    const responseContrasenia = await validacionesContrasenia(valueContrasenia,loginContrasenia);
 
     if(responseEmail && responseContrasenia){
          axios.post("http://localhost:7000/login",{
@@ -74,8 +106,13 @@ const valueform = async()=>{
     }
 }
 
-//Capturando el evento submit del formulario
-formRegistro.addEventListener('submit',async(e)=>{
+//Capturando el evento submit de los formularios
+formRegistro.addEventListener('submit',(e)=>{
         e.preventDefault();
-        valueform();
+        valueFormRegistro();
+});
+
+formLogin.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    valueFormLogin();
 });

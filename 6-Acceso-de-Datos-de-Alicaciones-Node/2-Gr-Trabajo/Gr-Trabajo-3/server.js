@@ -22,15 +22,10 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
-app.get('/login', (req, res) => {
-  res.render('login');
+app.get('/home', (req, res) => {
+  res.render('home');
 });
-app.get('/registro', (req, res) => {
-  res.render('registro');
-});
-app.get('/lobby', (req, res) => {
-  res.render('lobby');
-})
+
 
 app.post('/login', async (req, res) => {
   try {
@@ -55,7 +50,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.post('/registro', async (req, res) => {
+app.post('/usuario', async (req, res) => {
   try {
     const registro = req.body;
     await agregarRegistro(registro);
@@ -69,6 +64,11 @@ app.post('/registro', async (req, res) => {
       .end();
   }
 });
+
+app.get('usuarios',async(req,res)=>{
+  const usuarios = await obtenerUsuarios();
+  res.send(usuarios)
+})
 
 app.listen(port, () => console.log(`Servidor listo en el puerto ${port}`));
 

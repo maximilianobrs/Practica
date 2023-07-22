@@ -45,13 +45,17 @@ a{
 header{
     height: 100vh;
     width: 100%;
+}
+.row{
+    margin-top: 4rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 .box-form{
     height: auto;
-    width: 500px;
+    width: 50%;
     padding: 1rem;
 }
 .box-form h1{
@@ -113,10 +117,37 @@ header{
 .error{
     color: red;
 }
-#lobby-img{
+
+
+.box-table{
     width: 100%;
     height: auto;
+    margin-top: 2rem;
 }
+.box-table table th{
+    width: 50%;
+}
+.box-table table {
+    font-family: sans-serif;
+    color: white;
+    width: 100%;
+    margin: 1rem auto;
+    text-align: center;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.box-table table thead {
+    background-color: #6b6feb;
+    height: 40px;
+    color: white;
+}
+
+.box-table table tbody tr td {
+    height: 50px;
+    background-color: #353a3e;
+}
+
 @media (max-width: 600px ){
     .box-form{
         width: 100%;

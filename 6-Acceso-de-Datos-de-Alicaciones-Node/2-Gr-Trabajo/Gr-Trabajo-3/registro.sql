@@ -1,8 +1,3 @@
-CREATE DATABASE usuarios;
+CREATE DATABASE softlife;
 
-CREATE TABLE registros (
-    id SERIAL PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    email VARCHAR(200) NOT NULL,
-    contrasenia VARCHAR(255) NOT NULL
-);
+CREATE TABLE usuarios (email varchar(25), password varchar(25));

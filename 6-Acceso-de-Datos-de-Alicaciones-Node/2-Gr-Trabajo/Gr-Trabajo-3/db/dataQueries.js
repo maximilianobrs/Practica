@@ -19,7 +19,7 @@ export let obtenerRegistro = async (usuario) => {
     try {
         let values = Object.values(usuario)
         let consulta = {
-            text: 'SELECT * FROM registros WHERE email = $1 AND contrasenia = $2',
+            text: 'SELECT * FROM usuarios WHERE email = $1 AND contrasenia = $2',
             values
         }
         const {rows} = await pool.query(consulta);
@@ -33,7 +33,7 @@ export let agregarRegistro = async (registro) => {
     try {
         let values = Object.values(registro)
         let consulta = {
-            text: 'INSERT INTO registros (nombre , email , contrasenia) VALUES ( $1, $2, $3)',
+            text: 'INSERT INTO usuarios (email , contrasenia) VALUES ( $1, $2)',
             values
         }
         const results = await pool.query(consulta);
@@ -41,4 +41,8 @@ export let agregarRegistro = async (registro) => {
     } catch (error) {
         console.log(error);
     }
+}
+export const obtenerUsuarios = async() =>{
+    const resultado = await pool.query('SELECT * FROM usuarios ORDER BY id DESC')
+    return resultado.rows
 }
