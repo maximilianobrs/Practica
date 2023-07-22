@@ -2,7 +2,7 @@ import express from 'express';
 import { create } from 'express-handlebars';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import { obtenerRegistro, agregarRegistro } from './db/dataQueries.js';
+import { obtenerRegistro, agregarRegistro,obtenerUsuarios } from './db/dataQueries.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -65,9 +65,16 @@ app.post('/usuario', async (req, res) => {
   }
 });
 
-app.get('usuarios',async(req,res)=>{
-  const usuarios = await obtenerUsuarios();
-  res.send(usuarios)
+app.get('/usuarios',async(req,res)=>{
+  try {
+    const usuarios = await obtenerUsuarios();
+    res.status(201).json(usuarios)
+  } catch (error) {
+    console.log(error);
+    res.status(500)
+      .json([{ message: 'Se a producido un error' }])
+      .end();
+  }
 })
 
 app.listen(port, () => console.log(`Servidor listo en el puerto ${port}`));

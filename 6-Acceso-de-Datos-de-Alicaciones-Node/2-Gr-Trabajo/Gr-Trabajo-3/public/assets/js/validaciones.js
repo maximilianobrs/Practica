@@ -4,6 +4,7 @@ const loginEmail = document.querySelector('#loginEmail');
 const loginContrasenia = document.querySelector('#loginContrasenia');
 const RegistroEmail = document.querySelector('#RegistroEmail');
 const RegistroContrasenia = document.querySelector('#RegistroContrasenia');
+const tabla = document.querySelector('#tabla');
 
 //Funcion para agregar el mensaje de error
 const agregarError = (element,mensage)=>{
@@ -51,14 +52,25 @@ const validacionesContrasenia = (contrasenia,element)=>{
     }
 }
 
+
 const obtenerUsuarios = async()=>{
     try {
         let response = await axios.get("http://localhost:7000/usuarios")
-        console.log(response);
+        let usuarios = response.data
+
+        const tablaBody = usuarios.map(usuario => `
+        <tr>
+          <td>${usuario.email}</td>
+          <td>${usuario.password}</td>
+        </tr>
+      `).join('');
+
+        tabla.innerHTML = tablaBody;
     } catch (error) {
         console.log(error);
     }
 }
+window.addEventListener('load',obtenerUsuarios);
 
 //Funcion inicio de validaciones formulario
 const valueFormRegistro = async()=>{
