@@ -107,10 +107,9 @@ const valueFormLogin = async()=>{
          }).then((response)=>{ 
             console.log(response.status);
             if(response.status === 200){
-                console.log('if');
-                window.location.replace("http://localhost:7000/lobby");
+                console.log('login exitoso');
             }else {
-                agregarError(contrasenia,"No se pudo establecer conexión");
+                agregarError(loginContrasenia,"No se pudo establecer conexión");
             }
          }).catch((error)=>{
             console.log(error);
