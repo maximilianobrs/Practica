@@ -1,10 +1,16 @@
+//Importando modulos express,dotenv y las rutas.
 import express from "express";
+import dotenv from "dotenv";
 import saludoRoutes from "../routes/quienSoyRoutes.js"
 
+//confiuracion de .env.
+dotenv.config();
+
+//definiendo la clase Server.
 class Server {
     constructor() {
         this.app = express();
-        this.port =3000;
+        this.port = process.env.PORT || 4000;
 
         this.middlewares();
         this.routes();
@@ -24,4 +30,5 @@ class Server {
     }
 }
 
+//Exportando la clase Server.
 export default Server;
